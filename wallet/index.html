@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Expenses Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="script.js">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Josue Expenses Calculator</h1>
+      <form>
+        <label for="earnings">Enter your earnings:</label>
+        <input type="number" id="earnings" name="earnings"><br>
+        <button type="button" id="calculate-button">Calculate</button>
+      </form>
+      <div id="results"></div>
+    </div>
+    <script src="script.js">
+      // get references to HTML elements
+const earningsInput = document.getElementById('earnings');
+const calculateButton = document.getElementById('calculate-button');
+const resultsDiv = document.getElementById('results');
+
+// define expenses
+const piano = 700;
+const transporte_mama = 680;
+const taxi = 200;
+const higiene_personal = 100;
+const recrativity = 100;
+const FOOD = 500;
+
+// calculate expenses and remaining balance
+function calculateExpenses() {
+  const earnings = parseFloat(earningsInput.value);
+  const expenses = piano + transporte_mama + taxi + higiene_personal + recrativity + FOOD;
+  const remainingBalance = earnings - expenses;
+  
+  // display results on the interface
+resultsDiv.innerHTML = `Your total expenses are: $${expenses.toFixed(2)}<br>Your remaining balance is: $${remainingBalance.toFixed(2)}<br><br>Expense breakdown:<br>Piano: $${piano.toFixed(2)}<br>Transporte Mama: $${transporte_mama.toFixed(2)}<br>Taxi: $${taxi.toFixed(2)}<br>Higiene Personal: $${higiene_personal.toFixed(2)}<br>Recreativity: $${recrativity.toFixed(2)}<br>Food: $${FOOD.toFixed(2)}`;
+}
+
+// add event listener to the "Calculate" button
+calculateButton.addEventListener('click', calculateExpenses);
+    </script>
+  </body>
+</html>
